@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <link rel="stylesheet" href="saolei_cg.css" />
+    <script src="./jquery-3.2.0.js"></script>
+    <script src = './cg.js'></script>
+
+    <script>
+        window.onload = function(){
+            var box = document.getElementById('box');
+            var arr = [0,10,70,200];
+            $('#new_1').click(function(){
+                window.location.reload();
+            })
+            $('#sure').click(function(){
+                var kd = $('#kd').val();
+                var cd = $('#cd').val();
+                var num = $('#num_mine').val();
+                var val = $('#set_num').val();
+                if( val == 4){
+                    if(isNaN(kd)||isNaN(cd)||isNaN(kd)){
+                        alert('输入错误！');
+                        return false;
+                    }
+                    var game = new mineCraft(kd,cd,num,box);
+                }else{
+                    var game = new mineCraft(val*10,val*10,arr[val],box);
+                }
+                $('#set_num').attr('disabled',true);
+                $(this).attr('disabled',true);
+            })
+            $('#set_num').change(function(){
+
+                if(this.value == 4){
+                    flag = false;
+                }else{
+                    flag = true;
+                }
+                for(var i = 0,len = $('input').length;i<len;i++){
+                    $('input').attr('disabled',flag);
+                }
+            })
+        }
+
+    </script>
+    <body>
+        <ul>
+            <span>
+                <select name="" id="set_num">
+                    <option value=1>初级</option>
+                    <option value=2>中级</option>
+                    <option value=3>高级</option>
+                    <option value=4>自定义</option>}
+                    option
+                </select>
+                <!-- <span></span> -->
+                宽度：<input type="text" name="" id='kd' disabled="true" />高度<input type="text" id = 'cd' disabled="true" />
+                <i style = "color:red">请设置雷个数：</i><input type="text" id = 'num_mine' disabled="true" />
+                <button id = "sure">确定</button>
+            </span>
+            <span id = "new_1">New Game!!!</span>
+        </ul>
+        <div id = 'box'>
+
+        </div>
+    </body>
+</html>

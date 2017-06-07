@@ -1,0 +1,102 @@
+/*
+* @Author: Marte
+* @Date:   2017-06-05 13:39:12
+* @Last Modified by:   Marte
+* @Last Modified time: 2017-06-06 13:28:12
+*/
+#box{
+    margin:0 auto;
+}
+*{
+    margin: 0;
+    padding:0;
+}
+.tile{
+      width: 49px;
+      height: 49px;
+      border: 1px solid black;
+      float: left;
+      text-align: center;
+      line-height: 49px;
+      font-size: 20px;
+      cursor: pointer;
+      background: url("ba.png");
+      /*background: green;*/
+}
+.showed{
+      width: 49px;
+      height: 49px;
+      border: 1px solid black;
+      float: left;
+      text-align: center;
+      line-height: 49px;
+      font-size: 20px;
+      cursor: pointer;
+      background: rgb(195,206,228);
+}
+.boom{
+      width: 49px;
+      height: 49px;
+      border: 1px solid black;
+      float: left;
+      text-align: center;
+      line-height: 49px;
+      font-size: 20px;
+      cursor: pointer;
+      background: url("Minesmall.png");
+}
+.biaoji{
+        width: 49px;
+      height: 49px;
+      border: 1px solid black;
+      float: left;
+      text-align: center;
+      line-height: 49px;
+      font-size: 20px;
+      cursor: pointer;
+      background: url("biaoji.png");
+}
+.current{
+   background: url("baq.png");
+}
+p{
+   display: inline-block;
+   width: 510px;
+   height: 30px;
+   font-size:25px;
+   font-family: "楷体";
+   background: #fe0;
+   margin-top: 3px;
+}
+#new_1{
+      display: inline-block;
+      width: 100px;
+      height: 30px;
+      line-height: 30px;
+      border: 1px solid grey;
+      border-radius: 5px;
+      background: rgb(143,122,102);
+      color: white;
+      font-size: 15px;
+      cursor:  pointer;
+}
+input{
+   width: 30px;
+   color:#626262;
+}
+
+.current{
+   background: url("baq.png");
+}
+ul{
+   margin: 0;
+   padding: 0;
+}
+li{
+   display:inline-block;
+}
+body{
+   text-align:center;
+   font-size: 15px;
+   font-family: "楷体";
+}
