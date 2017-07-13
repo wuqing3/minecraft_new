@@ -10,7 +10,8 @@
     <script>
         window.onload = function(){
             var box = document.getElementById('box');
-            var arr = [0,10,70,200];
+            var arr = [0,10,40,100];
+            var arr_type = [0,10,16,24];
             $('#new_1').click(function(){
                 window.location.reload();
             })
@@ -24,15 +25,17 @@
                         alert('输入错误！');
                         return false;
                     }
-                    var game = new mineCraft(kd,cd,num,box);
+                    var game = new mineCraft(kd,cd,num,box,4);
                 }else{
-                    var game = new mineCraft(val*10,val*10,arr[val],box);
+                    var game = new mineCraft(arr_type[val],arr_type[val],arr[val],box,$('#set_num').val()-1);
                 }
                 $('#set_num').attr('disabled',true);
                 $(this).attr('disabled',true);
             })
+            $("#time_best").click(function(){
+                $('#best_grade').toggle('fast');
+            })
             $('#set_num').change(function(){
-
                 if(this.value == 4){
                     flag = false;
                 }else{
@@ -42,8 +45,41 @@
                     $('input').attr('disabled',flag);
                 }
             })
-        }
+            
+            $("#ul_dj_list").click(function(e){
+                $("#ul_dj_list>li").css({
+                    'backgroundColor':'white'
+                });        
+                e.target.style.backgroundColor = "rgb(51,153,255)";
 
+                var arr_grade = JSON.parse(localStorage.time);
+                var arr_details =JSON.parse(localStorage.details);
+
+                var $target = $(e.target);
+                var index = $target.index();
+
+                var len = $('#ul_time_list>li').length;
+                $('#ul_time_list>li').each(function(v){
+                    if(arr_grade[index][v] == undefined){
+                        $(this).text('');
+                    }else{
+                        $(this).html('&nbsp;&nbsp;'+arr_grade[index][v][0]+'s'+'&nbsp;&nbsp;&nbsp;'+arr_grade[index][v][1]);
+                    }
+                })
+                
+                $('#game_details span').each(function(v){
+                    $(this).html(arr_details[index][v]);
+                })
+
+            })
+            
+            $('#clear_jl').click(function(){
+                localStorage.clear();
+                $('#new_1').click();
+                $('#time_best').click();
+            })
+
+        }
     </script>
     <body>
         <ul>
@@ -52,18 +88,49 @@
                     <option value=1>初级</option>
                     <option value=2>中级</option>
                     <option value=3>高级</option>
-                    <option value=4>自定义</option>}
-                    option
+                    <option value=4>自定义</option>
                 </select>
-                <!-- <span></span> -->
                 宽度：<input type="text" name="" id='kd' disabled="true" />高度<input type="text" id = 'cd' disabled="true" />
                 <i style = "color:red">请设置雷个数：</i><input type="text" id = 'num_mine' disabled="true" />
                 <button id = "sure">确定</button>
             </span>
             <span id = "new_1">New Game!!!</span>
+            <span id = "time_need" class = "time">0</span>
+            <span id = "time_best" class = "time">信息统计</span>
         </ul>
-        <div id = 'box'>
+        <div id = "best_grade">
+            <div id = "dj_list">
+                <ul id = "ul_dj_list">
+                    <li>初级</li>
+                    <li>中级</li>
+                    <li>高级</li>
+                </ul>
+            </div>
+            <div style="position:absolute; left:30px;top:150px;">
+                <button id = "clear_jl">重置信息</button>
+            </div>
 
+            <div id = "grades_list">
+                <span>最佳时间</span>
+                <ul id = "ul_time_list">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div id="game_details">
+                <li>已玩游戏：<span></span></li>
+                <li>已胜游戏：<span></span></li>
+                <li>游戏胜率：<span></span></li>
+                <li>最多连胜：<span></span></li>
+                <li>最多连败：<span></span></li>
+                <li>当前连局：<span></span></li>
+            </div>
+            
         </div>
+        <div id = 'box'></div>
+        
     </body>
 </html>

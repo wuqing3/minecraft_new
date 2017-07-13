@@ -34,6 +34,17 @@
       cursor: pointer;
       background: rgb(195,206,228);
 }
+.test{
+      width: 49px;
+      height: 49px;
+      border: 1px solid black;
+      float: left;
+      text-align: center;
+      line-height: 49px;
+      font-size: 20px;
+      cursor: pointer;
+      background: rgb(195,206,228);
+}
 .boom{
       width: 49px;
       height: 49px;
@@ -88,15 +99,85 @@ input{
 .current{
    background: url("baq.png");
 }
-ul{
+/*ul{
    margin: 0;
    padding: 0;
-}
-li{
-   display:inline-block;
-}
+}*/
 body{
    text-align:center;
    font-size: 15px;
    font-family: "楷体";
+}
+.time{
+      display: inline-block;
+      width: 70px;
+      height: 30px;
+      line-height: 30px;
+      border: 1px solid grey;
+      border-radius: 5px;
+      background: rgb(143,122,102);
+      color: white;
+      font-size: 20px;
+      cursor:  pointer;
+      position: relative;
+      top:3px;
+
+}
+#time_best{
+      position: relative;
+      top:12px;
+      width:100px;
+      position: relative;
+      top:3px;
+}
+#best_grade{
+      display: none;
+      width:600px;
+      height: 210px;
+      border:1px solid black;
+      /*background:black;*/
+      background:white;
+      z-index:10;
+      position: absolute;
+      left: 550px;
+      top:70px;
+}
+li{
+      cursor: pointer;
+      text-align:left; 
+      list-style: none;
+      /*width:100%;*/
+      height: 30px;
+      font-size: 20px;
+      padding:5px;
+}
+div#dj_list{
+      float: left;
+      width:25%;
+      /*padding:5px; */
+      border-bottom:1px solid black;
+      border-right: 1px solid black;
+}
+div#grades_list{
+      float:left;
+      margin: -1px;
+      width:40%;
+      height:200px;
+      border:1px solid black;
+      padding: 5px;
+}
+div#game_details{
+      float: right;
+      width:29.8%;
+      margin: -1px;
+      height: 201px;
+      border-bottom:1px solid black;
+      padding: 5px;
+}
+div#game_details li{
+      padding: 0px;
+}
+div#grades_list li{
+      padding: 0px;
+      height: 33px;
 }
