@@ -10,7 +10,7 @@
     <script>
         window.onload = function(){
             var box = document.getElementById('box');
-            var arr = [0,10,40,100];
+            var arr = [0,10,40,120];
             var arr_type = [0,10,16,24];
             $('#new_1').click(function(){
                 window.location.reload();
@@ -51,28 +51,39 @@
                     'backgroundColor':'white'
                 });        
                 e.target.style.backgroundColor = "rgb(51,153,255)";
-
-                var arr_grade = JSON.parse(localStorage.time);
-                var arr_details =JSON.parse(localStorage.details);
-
                 var $target = $(e.target);
                 var index = $target.index();
-
-                var len = $('#ul_time_list>li').length;
-                $('#ul_time_list>li').each(function(v){
+                // var arr_grade ;
+                console.log(!!localStorage.time);
+                if(!!localStorage.time){
+                    var arr_grade = JSON.parse(localStorage.time);
+                    $('#ul_time_list>li').each(function(v){
                     if(arr_grade[index][v] == undefined){
                         $(this).text('');
                     }else{
                         $(this).html('&nbsp;&nbsp;'+arr_grade[index][v][0]+'s'+'&nbsp;&nbsp;&nbsp;'+arr_grade[index][v][1]);
                     }
-                })
+                }) 
+            
+           }
+                 
+                
+                
+                var arr_details =JSON.parse(localStorage.details);
+
+                
+
+                var len = $('#ul_time_list>li').length;
+                
                 
                 $('#game_details span').each(function(v){
                     $(this).html(arr_details[index][v]);
                 })
 
             })
-            
+            $('#close').click(function(){
+                $('#best_grade').hide();
+            })
             $('#clear_jl').click(function(){
                 localStorage.clear();
                 $('#new_1').click();
@@ -108,6 +119,7 @@
             </div>
             <div style="position:absolute; left:30px;top:150px;">
                 <button id = "clear_jl">重置信息</button>
+                    <button id="close">关闭</button>
             </div>
 
             <div id = "grades_list">
@@ -127,6 +139,7 @@
                 <li>最多连胜：<span></span></li>
                 <li>最多连败：<span></span></li>
                 <li>当前连局：<span></span></li>
+                <li>平均耗时：<span></span></li>
             </div>
             
         </div>

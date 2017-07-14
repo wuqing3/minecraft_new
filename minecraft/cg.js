@@ -18,11 +18,6 @@
         this.time_dc ='';
         this.time_arr = [[],[],[]];
         this.details = [[],[],[]];
-        // this.games_num = '';
-        // this.games_win = '';
-        // this.games_consecutive_win = '';
-        // this.games_consecutive_lose = '';
-        // this.games_consecutive_now = '';
         this.type = type;
         this.buildTiles();
     };
@@ -30,7 +25,6 @@
     mineCraft.prototype = {
 
         buildTiles:function(){
-            
             this.obj.style.width = 51*this.num1+'px';
             this.obj.style.height = 51*this.num2+'px';
             var indexOfdiv = 0;
@@ -314,10 +308,11 @@
         
             }
             else if(num == 1){
+                console.log(localStorage.details);
                 clearInterval(this.time_dsq);
                 if(this.type == 4){return false;}
                 if(localStorage.details == undefined){                    
-                    localStorage.details = JSON.stringify([[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]);
+                    localStorage.details = JSON.stringify([[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]]);
                 }
                 if(JSON.parse(localStorage.details) instanceof Array){
                     this.details = JSON.parse(localStorage.details);             
@@ -345,6 +340,7 @@
                 if(this.details[this.type][5]>this.details[this.type][3]){
                     this.details[this.type][3] = this.details[this.type][5];
                 }
+                this.details[this.type][6] = ((this.details[this.type][6]*this.details[this.type][1]+this.time_dc)/(this.details[this.type][1]+1)).toFixed(1); 
                 this.details[this.type][1] += 1;
                 this.details[this.type][2] = this.toPercent(this.details[this.type][1]/this.details[this.type][0]);
                 localStorage.details = JSON.stringify(this.details);
